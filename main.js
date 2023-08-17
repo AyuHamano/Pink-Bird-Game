@@ -101,7 +101,7 @@ function criaFlappyBird() {
     altura: 24,
     x: 10,
     y: 50,
-    pulo: 4.6,
+    pulo: 4.3,
     pula() {
       console.log('devo pular');
       console.log('[antes]', flappyBird.velocidade);
@@ -276,7 +276,7 @@ function criaCanos() {
     desenha() {
       canos.pares.forEach(function(par) {
         const yRandom = par.y;
-        const espacamentoEntreCanos = 110;
+        const espacamentoEntreCanos = 90;
   
         const canoCeuX = par.x;
         const canoCeuY = yRandom; 
