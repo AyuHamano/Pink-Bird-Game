@@ -1,4 +1,6 @@
+
 let frames = 0;
+let pontuacao;
 const som_HIT = new Audio();
 som_HIT.src = './efeitos/hit.wav';
 
@@ -138,9 +140,6 @@ function criaFlappyBird() {
         const baseRepeticao = flappyBird.movimentos.length;
         flappyBird.frameAtual = incremento % baseRepeticao
       }
-        // console.log('[incremento]', incremento);
-        // console.log('[baseRepeticao]',baseRepeticao);
-        // console.log('[frame]', incremento % baseRepeticao);
     },
     desenha() {
       flappyBird.atualizaOFrameAtual();
@@ -177,6 +176,66 @@ const mensagemGetReady = {
     );
   }
 }
+
+ 
+//medalhas
+const medalha = {
+    spriteX: 0,
+    spriteY: 78,
+    largura: 44,
+    altura: 44,
+    x: 72,
+    y: 137,
+    pontuacao: 1,
+    tipoMedalha: [
+    { spriteX: 0, spriteY: 124, }, // ouro
+    { spriteX: 48, spriteY: 78, }, // prata
+    { spriteX: 48, spriteY: 124, }, // bronze
+    { spriteX: 0, spriteY: 78, }, // branca
+
+    ],
+    atualizaPontuacao () {
+        if(globais.placar.pontuacao < 20) pontuacao = 3
+        else if(globais.placar.pontuacao >= 20 && globais.placar.pontuacao < 50) pontuacao = 2
+        else if(globais.placar.pontuacao >= 50 && globais.placar.pontuacao < 100) pontuacao = 1
+        else if(globais.placar.pontuacao >= 100) pontuacao = 0
+
+    },
+    desenha() {
+        medalha.atualizaPontuacao()
+        
+        const { spriteX, spriteY } = medalha.tipoMedalha[pontuacao];
+        contexto.drawImage(
+            sprites,
+            spriteX, spriteY,
+            medalha.largura, medalha.altura,
+            medalha.x, medalha.y,
+            medalha.largura, medalha.altura,
+        )
+    }
+}
+/*medalhas: 
+//largura 44px x 44px
+
+branca
+sY 78
+sX 0
+
+prata
+sy 78
+sx 48
+
+ouro
+sy 124
+sx 0
+
+bronze
+sy 124
+sx 48
+
+*/
+
+
 
 // [mensagemGameOver]
 const mensagemGameOver = {
@@ -217,7 +276,7 @@ function criaCanos() {
     desenha() {
       canos.pares.forEach(function(par) {
         const yRandom = par.y;
-        const espacamentoEntreCanos = 90;
+        const espacamentoEntreCanos = 110;
   
         const canoCeuX = par.x;
         const canoCeuY = yRandom; 
@@ -278,8 +337,6 @@ function criaCanos() {
         });
       }
 
-
-
       canos.pares.forEach(function(par) {
         par.x = par.x - 2;
 
@@ -327,6 +384,7 @@ function criaPlacar() {
 // 
 const globais = {};
 let telaAtiva = {};
+
 function mudaParaTela(novaTela) {
   telaAtiva = novaTela;
 
@@ -359,6 +417,7 @@ const Telas = {
 };
 
 Telas.JOGO = {
+
   inicializa() {
     globais.placar = criaPlacar();
   },
@@ -383,6 +442,7 @@ Telas.JOGO = {
 Telas.GAME_OVER = {
   desenha() {
     mensagemGameOver.desenha();
+    medalha.desenha()
   },
   atualiza() {
     
