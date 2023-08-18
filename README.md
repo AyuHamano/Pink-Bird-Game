@@ -1,4 +1,12 @@
 # Pinky-Bird-Game 
+
+<p float="left">
+
+ <img src="[https://user-images.githubusercontent.com/105131652/186226747-206a5cb6-0390-445f-9ab7-aaa88827750e.jpg](https://github.com/AyuHamano/Pink-Bird-Game/blob/main/PinkBird.png)" width="200" />
+
+</p>
+
+
 ### O programa a ser desenvolvido para a disciplina LPP será um jogo web, que é uma das aplicações do JavaScript 
 
   O jogo consiste numa versão simplificada do Flappy Bird, em que o jogador deve clicar para que o Flappy Bird continue voando e não caia. Na tela, vão ter tubos como obstáculos, em que o jogador deve desviar conforme vai subindo ou descendo. O jogo acaba quando o Bird cai por completo ou colide com um desses tubos, e também vai apresentar o score de tempo em uma tela no final do jogo e um botão se reiniciar.
