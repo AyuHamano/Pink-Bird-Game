@@ -1,10 +1,10 @@
 # Pinky-Bird-Game 
 
-<p float="left">
+ <div align="center">
 
  <img src="https://github.com/AyuHamano/Pink-Bird-Game/blob/main/PinkBird.png"/>
 
-</p>
+ </div>
 
 
 ### O programa a ser desenvolvido para a disciplina LPP será um jogo web, que é uma das aplicações do JavaScript 
